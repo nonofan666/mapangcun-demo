@@ -6,11 +6,12 @@
   <title>马胖村多商家运营后台</title>
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="admin-rules.css">
+  <link rel="stylesheet" href="admin-rules-v2.css">
 </head>
 <body>
   <aside class="sidebar">
     <div class="brand"><span>马</span><div><b>马胖村</b><small>多商家运营平台</small></div></div>
-    <div class="role"><i>平台</i><div><b>马胖村运营中心</b><small>超级管理员⌄</small></div></div>
+    <button class="role role-button" id="roleSwitch"><i>平台</i><div><b>稚旅平台运营端</b><small>最高权限 · 可切换商家视角⌄</small></div></button>
     <nav>
       <p>经营</p>
       <a class="active" href="#dashboard" data-page="dashboard"><i>⌂</i>经营概览</a>
@@ -56,7 +57,7 @@
     </section>
 
     <section class="page" id="page-revenue">
-      <div class="metrics"><article><span>本月交易额</span><strong>¥128,640</strong><small>较上月 +21.4%</small></article><article><span>平台预计收益</span><strong>¥15,437</strong><small>综合服务费 12%</small></article><article><span>待结算商家款</span><strong>¥36,820</strong><small>4 个结算单</small></article><article><span>已结算</span><strong>¥76,383</strong><small>账期 T+7</small></article></div>
+      <div class="metrics"><article><span>本月交易额</span><strong>¥128,640</strong><small>较上月 +21.4%</small></article><article><span>平台佣金</span><strong>¥3,859</strong><small>售价的 3%</small></article><article><span>待结算商家款</span><strong>¥36,820</strong><small>当前商家：马胖村</small></article><article><span>已结算</span><strong>¥76,383</strong><small>账期 T+7</small></article></div>
       <article class="panel"><div class="panel-head"><div><h2>收益与结算明细</h2><p>按订单拆分商家应收、平台服务费和退款</p></div><div class="actions"><button class="ghost">下载对账单</button><button class="dark">发起批量结算</button></div></div><div class="toolbar"><div class="tabs"><button class="active">全部流水</button><button>待结算</button><button>已结算</button><button>退款</button></div><input type="month" value="2026-08"></div><div class="table-wrap"><table><thead><tr><th>结算单号</th><th>商家</th><th>关联订单</th><th>订单实收</th><th>平台服务费</th><th>商家应收</th><th>状态</th><th>操作</th></tr></thead><tbody id="revenueRows"></tbody></table></div></article>
     </section>
 
@@ -71,13 +72,14 @@
     </section>
 
     <section class="page" id="page-products">
-      <div class="product-summary"><div><b>商品结构</b><span>支持定制线路、住宿、餐饮、体验、交通、讲解、农产品 7 类商品</span></div><button class="dark" id="addProduct">＋ 新增商品</button></div>
+      <div class="product-summary"><div><b>商品结构</b><span>当前农产品支持茶叶、蔬菜水果；库存单位为盒、袋、斤、份</span></div><button class="dark" id="addProduct">＋ 新增商品</button></div>
       <article class="panel"><div class="panel-head"><div><h2>全平台商品</h2><p>平台可审核，商家仅管理自己的商品、价格和库存</p></div></div><div class="toolbar"><div class="tabs"><button class="active">全部 50</button><button>在售 47</button><button>待审核 2</button><button>已下架 1</button></div><input placeholder="搜索商品 / 商家 / SKU"></div><div class="table-wrap"><table><thead><tr><th>商品信息</th><th>所属商家</th><th>类目</th><th>价格</th><th>库存 / 已售</th><th>审核状态</th><th>操作</th></tr></thead><tbody id="productRows"></tbody></table></div></article>
     </section>
 
     <section class="page" id="page-rules">
       <div class="rule-hero"><div><b>专题页业务规则</b><span>统一配置前台展示、预约库存、商品详情和售后口径</span></div><div><span class="status-pill ok">已同步用户端</span><button class="dark" id="saveRules">保存并发布</button></div></div>
       <div class="rule-grid">
+        <article class="panel rule-card wide"><div class="panel-head"><div><h2>账号与权限</h2><p>平台运营端与商家端两套视角</p></div><span class="status-pill info">稚旅为最高权限</span></div><div class="permission-grid"><div><b>稚旅平台运营端</b><span>全部订单、商家、商品、资质、分润、规则和用户数据</span><strong>最高权限</strong></div><div><b>马胖村商家端</b><span>仅管理本商家的商品、库存、订单、核销、收益和资质</span><strong>商家权限</strong></div></div></article>
         <article class="panel rule-card wide"><div class="panel-head"><div><h2>特色定制出行</h2><p>首页排序、宣传视频与二级行程选择规则</p></div><span class="status-pill ok">展示中</span></div><div class="rule-body">
           <div class="route-order-list"><div><i>1</i><b>2天1晚</b><span>首页默认选中</span><button class="op rule-edit">配置视频</button></div><div><i>2</i><b>3天2晚</b><span>视频已配置</span><button class="op rule-edit">配置视频</button></div><div><i>3</i><b>5天4晚</b><span>视频已配置</span><button class="op rule-edit">配置视频</button></div></div>
           <div class="config-row"><div><b>二级页面“几选一”</b><small>用户在完整行程内直接选择，确认人数时一并提交</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div>
@@ -88,6 +90,7 @@
         <article class="panel rule-card wide"><div class="panel-head"><div><h2>退款与取消规则</h2><p>定制线路统一售后口径</p></div><button class="text-btn rule-edit">编辑规则</button></div><div class="refund-grid"><div><b>出发前10天以上</b><strong>退 100%</strong></div><div><b>出发前10至5天</b><strong>退 88%</strong></div><div><b>出发前4至1天</b><strong>退 76%</strong></div><div><b>活动当天</b><strong>退 64%</strong></div></div><div class="rule-notes"><span>天气或未成团取消：全额退款</span><span>机票/高铁票退改手续费：用户承担</span><span>发生退款：6%小程序平台手续费由用户承担</span><span>综合产品不支持单项更改或取消</span></div></article>
         <article class="panel rule-card"><div class="panel-head"><div><h2>私导服务</h2><p>单项体验列表与详情页悬浮入口</p></div></div><div class="rule-body"><label class="config-field">咨询电话<input id="guidePhone" value="138 0000 1234"></label><label class="config-field">服务时间<input value="09:00—20:00"></label><div class="config-row"><div><b>前台显示“一键呼叫私导”</b><small>帮助用户自由规划体验组合</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div></div></article>
         <article class="panel rule-card"><div class="panel-head"><div><h2>预约与核销</h2><p>多商家联合履约规则</p></div></div><div class="rule-body"><div class="template-item"><b>预约提醒</b><span>到店前一天完成预约确认</span></div><div class="template-item"><b>核销凭证</b><span>购物车结算后生成统一二维码</span></div><div class="template-item"><b>商家权限</b><span>仅核销本商家项目，平台查看全部</span></div><button class="ghost rule-edit">配置核销权限</button></div></article>
+        <article class="panel rule-card wide"><div class="panel-head"><div><h2>分润参数</h2><p>依据《茶叶定价及分润》；当前统一商家为马胖村</p></div><button class="text-btn rule-edit">配置渠道分润</button></div><div class="profit-config"><div><span>平台佣金</span><b>售价 × 3%</b><small>达人渠道启用；其他渠道按表配置</small></div><div><span>稚旅利润</span><b>按 SKU / 渠道</b><small>从商品毛利中计算，不设统一固定比例</small></div><div><span>商家结算主体</span><b>马胖村</b><small>后续支持新增入驻商家</small></div><div><span>结算方式</span><b>订单分账</b><small>退款后自动冲正</small></div></div></article>
       </div>
     </section>
   </main>
