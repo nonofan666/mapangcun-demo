@@ -6,6 +6,7 @@
   <title>特色定制完整行程</title>
   <link rel="stylesheet" href="prototype.css">
   <link rel="stylesheet" href="route-booking.css">
+  <link rel="stylesheet" href="party.css">
 </head>
 <body>
   <main class="app">
@@ -17,8 +18,8 @@
     <section class="section"><h2>行程说明</h2><div class="notice">实际顺序会根据天气、村寨接待与项目开放情况微调；调整不改变主要体验内容。</div></section>
     <div class="bottom-space"></div><div class="bottom single"><button class="primary" id="routeBookLink">选择日期、人数并预订</button></div>
   </main>
-  <div class="modal-mask" id="fullBookingModal"><div class="modal-card package-sheet route-booking-sheet"><div class="modal-handle"></div><div class="modal-title"><div><h2>选择日期与人数</h2><p id="packageSheetDesc">先选择出发日期，再选择同行人数</p></div><button id="closeFullBooking">×</button></div><section class="booking-block"><h3>出发日期</h3><div class="booking-months" id="routeDateMonths"></div><div class="route-date-list" id="routeDateList"></div></section><section class="booking-block"><h3>同行人数与套餐价</h3><p class="booking-tip">价格为整组套餐总价</p><div class="package-list" id="fullPackageList"></div></section><button class="modal-submit" id="confirmPackage">请先选择出发日期</button></div></div>
+  <div class="modal-mask" id="fullBookingModal"><div class="modal-card package-sheet route-booking-sheet"><div class="modal-handle"></div><div class="modal-title"><div><h2>选择日期与人数</h2><p id="packageSheetDesc">先选择出发日期，再选择同行人数</p></div><button id="closeFullBooking">×</button></div><section class="booking-block"><h3>出发日期</h3><div class="booking-months" id="routeDateMonths"></div><div class="route-date-list" id="routeDateList"></div></section><section class="booking-block"><h3>同行人数与套餐价</h3><p class="booking-tip">价格为整组套餐总价</p><div class="package-list" id="fullPackageList"></div></section><section class="booking-block"><h3>出行人数</h3><p class="booking-tip" id="partyLimitHint">成人与儿童合计需与套餐人数一致</p><div class="party-selector" data-party data-fixed="2"><div><span><b>成人</b><small>年满12周岁</small></span><div class="party-counter"><button data-kind="adult" data-d="-1">−</button><b data-value="adult">2</b><button data-kind="adult" data-d="1">＋</button></div></div><div><span><b>儿童</b><small>未满12周岁</small></span><div class="party-counter"><button data-kind="child" data-d="-1">−</button><b data-value="child">0</b><button data-kind="child" data-d="1">＋</button></div></div></div></section><button class="modal-submit" id="confirmPackage">请先选择出发日期</button></div></div>
   <div class="toast" id="toast">已选择套餐，进入预订信息确认</div>
-  <script src="route-data.js"></script><script>renderFullRoute();initFullBooking();</script>
+  <script src="route-data.js"></script><script src="party.js"></script><script>renderFullRoute();initFullBooking();initPartyCounters('custom');</script>
 </body>
 </html>
