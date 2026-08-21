@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>马胖村单项体验</title><link rel="stylesheet" href="prototype.css"></head>
+<body><main class="app experience-shop-page">
+  <div class="status"><span>9:41</span><span>● ● ▰</span></div>
+  <nav class="nav"><a href="index.html">‹</a><strong>马胖村单项体验</strong><a class="cart-link" href="cart.html">购物车 <i id="cartBadge">0</i></a></nav>
+  <header class="shop-header"><div class="shop-avatar">马</div><div><h1>马胖村单项体验</h1><p>官方严选 · 到店体验 · 一码核销</p><div><span>全年可约</span><span>多项合并结算</span></div></div></header>
+  <section class="ticket-date"><div class="ticket-date-title"><div><b>游玩日期</b><span>不同日期库存可能不同</span></div><button id="openCalendar"><strong id="selectedDate">8月20日</strong><span>选择全年日期 ›</span></button></div><div class="quick-dates" id="quickDates"></div></section>
+  <section class="menu-layout"><aside class="side-categories" id="categoryTabs"></aside><div class="menu-content"><div class="menu-head"><b id="menuTitle">全部体验</b><span id="menuCount">17项</span></div><div class="inventory-list" id="experienceList"></div></div></section>
+  <div class="bottom-space"></div>
+  <button class="private-guide-fab" id="guideFab"><i>导</i><span>私导</span></button>
+  <div class="bottom cart-bottom"><div><small>已选 <b id="cartCount">0</b> 项</small><strong id="cartTotal">¥0</strong></div><a class="primary disabled" id="goCart" href="cart.html">去购物车</a></div>
+</main>
+<div class="toast" id="toast">已加入购物车</div>
+<div class="modal-mask" id="calendarModal"><div class="modal-card calendar-card"><div class="modal-handle"></div><div class="modal-title"><div><h2>选择游玩日期</h2><p>全年日期均可查看，实际库存以当天为准</p></div><button class="modal-close">×</button></div><div class="year-select"><button>‹</button><strong id="calendarYear">2026年</strong><button>›</button></div><div class="month-grid" id="monthGrid"></div><div class="calendar-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="calendar-days" id="calendarDays"></div></div></div>
+<div class="modal-mask" id="guideModal"><div class="modal-card guide-card"><div class="modal-handle"></div><div class="guide-icon">导</div><h2>一键呼叫私导</h2><p>不知道怎么搭配？告诉私导你的时间、人数和喜好，帮你规划一趟刚刚好的马胖村行程。</p><a href="tel:13800001234">☎ 138 0000 1234</a><small>服务时间 09:00—20:00</small><button class="modal-close guide-close">暂不需要</button></div></div>
+<script src="inventory.js"></script><script>renderExperienceList();initExperienceCalendar();document.getElementById('guideFab').onclick=()=>document.getElementById('guideModal').classList.add('show');document.querySelectorAll('.modal-close').forEach(x=>x.onclick=()=>x.closest('.modal-mask').classList.remove('show'));document.querySelectorAll('.modal-mask').forEach(x=>x.onclick=e=>{if(e.target===x)x.classList.remove('show')});</script>
+</body></html>
