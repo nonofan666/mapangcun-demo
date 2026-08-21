@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>马胖村多商家运营后台</title>
   <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin-rules.css">
 </head>
 <body>
   <aside class="sidebar">
@@ -20,6 +21,7 @@
       <a href="#merchants" data-page="merchants"><i>店</i>商家管理</a>
       <a href="#qualification" data-page="qualification"><i>证</i>资质审核<span class="nav-badge warn">2</span></a>
       <a href="#products" data-page="products"><i>品</i>商品管理</a>
+      <a href="#rules" data-page="rules"><i>规</i>规则中心</a>
     </nav>
     <a class="preview" href="index.html">打开用户端预览 <span>↗</span></a>
   </aside>
@@ -71,6 +73,22 @@
     <section class="page" id="page-products">
       <div class="product-summary"><div><b>商品结构</b><span>支持定制线路、住宿、餐饮、体验、交通、讲解、农产品 7 类商品</span></div><button class="dark" id="addProduct">＋ 新增商品</button></div>
       <article class="panel"><div class="panel-head"><div><h2>全平台商品</h2><p>平台可审核，商家仅管理自己的商品、价格和库存</p></div></div><div class="toolbar"><div class="tabs"><button class="active">全部 50</button><button>在售 47</button><button>待审核 2</button><button>已下架 1</button></div><input placeholder="搜索商品 / 商家 / SKU"></div><div class="table-wrap"><table><thead><tr><th>商品信息</th><th>所属商家</th><th>类目</th><th>价格</th><th>库存 / 已售</th><th>审核状态</th><th>操作</th></tr></thead><tbody id="productRows"></tbody></table></div></article>
+    </section>
+
+    <section class="page" id="page-rules">
+      <div class="rule-hero"><div><b>专题页业务规则</b><span>统一配置前台展示、预约库存、商品详情和售后口径</span></div><div><span class="status-pill ok">已同步用户端</span><button class="dark" id="saveRules">保存并发布</button></div></div>
+      <div class="rule-grid">
+        <article class="panel rule-card wide"><div class="panel-head"><div><h2>特色定制出行</h2><p>首页排序、宣传视频与二级行程选择规则</p></div><span class="status-pill ok">展示中</span></div><div class="rule-body">
+          <div class="route-order-list"><div><i>1</i><b>2天1晚</b><span>首页默认选中</span><button class="op rule-edit">配置视频</button></div><div><i>2</i><b>3天2晚</b><span>视频已配置</span><button class="op rule-edit">配置视频</button></div><div><i>3</i><b>5天4晚</b><span>视频已配置</span><button class="op rule-edit">配置视频</button></div></div>
+          <div class="config-row"><div><b>二级页面“几选一”</b><small>用户在完整行程内直接选择，确认人数时一并提交</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <div class="choice-chips"><span>2天1晚 · 上午体验 3选1</span><span>2天1晚 · 下午体验 3选1</span><span>3天2晚 · 上午体验 3选2</span><span>3天2晚 · 非遗课堂 2选1</span></div>
+        </div></article>
+        <article class="panel rule-card"><div class="panel-head"><div><h2>日期与库存</h2><p>单项体验全年可预约</p></div></div><div class="rule-body"><div class="config-row"><div><b>开放全年日期</b><small>用户可按月切换选择到店日期</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="config-row"><div><b>结算时统一确认日期</b><small>详情页不再重复显示日期和库存</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="config-row"><div><b>支付后自动扣减库存</b><small>按商品、日期、数量实时扣减</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div><button class="ghost rule-edit">查看日期库存日历</button></div></article>
+        <article class="panel rule-card"><div class="panel-head"><div><h2>商品详情模板</h2><p>按经营类目展示对应字段</p></div></div><div class="rule-body"><div class="template-item"><b>住宿</b><span>面积、床型、设施服务、预订须知、入住须知</span></div><div class="template-item"><b>餐饮 / 体验 / 交通</b><span>内容简介、服务流程、购买须知</span></div><div class="template-item"><b>农产品</b><span>规格、产地、配送范围、售后说明</span></div><button class="ghost rule-edit">编辑字段模板</button></div></article>
+        <article class="panel rule-card wide"><div class="panel-head"><div><h2>退款与取消规则</h2><p>定制线路统一售后口径</p></div><button class="text-btn rule-edit">编辑规则</button></div><div class="refund-grid"><div><b>出发前10天以上</b><strong>退 100%</strong></div><div><b>出发前10至5天</b><strong>退 88%</strong></div><div><b>出发前4至1天</b><strong>退 76%</strong></div><div><b>活动当天</b><strong>退 64%</strong></div></div><div class="rule-notes"><span>天气或未成团取消：全额退款</span><span>机票/高铁票退改手续费：用户承担</span><span>发生退款：6%小程序平台手续费由用户承担</span><span>综合产品不支持单项更改或取消</span></div></article>
+        <article class="panel rule-card"><div class="panel-head"><div><h2>私导服务</h2><p>单项体验列表与详情页悬浮入口</p></div></div><div class="rule-body"><label class="config-field">咨询电话<input id="guidePhone" value="138 0000 1234"></label><label class="config-field">服务时间<input value="09:00—20:00"></label><div class="config-row"><div><b>前台显示“一键呼叫私导”</b><small>帮助用户自由规划体验组合</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div></div></article>
+        <article class="panel rule-card"><div class="panel-head"><div><h2>预约与核销</h2><p>多商家联合履约规则</p></div></div><div class="rule-body"><div class="template-item"><b>预约提醒</b><span>到店前一天完成预约确认</span></div><div class="template-item"><b>核销凭证</b><span>购物车结算后生成统一二维码</span></div><div class="template-item"><b>商家权限</b><span>仅核销本商家项目，平台查看全部</span></div><button class="ghost rule-edit">配置核销权限</button></div></article>
+      </div>
     </section>
   </main>
 
